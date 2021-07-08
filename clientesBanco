@@ -1,0 +1,64 @@
+
+
+import java.util.*;
+
+public class clientes
+{
+    // Clase clientes
+   
+
+    public clientes(String nombre,String nCuenta,double saldo){
+        this.nombre=nombre;
+        this.nCuenta=nCuenta;
+        this.saldo=saldo;
+       
+    }
+        private String nombre;
+        private String nCuenta;
+        private double saldo;
+
+    
+    public String getNombre(){
+        return nombre;
+    }
+    public void setNombre(String nombre){
+        this.nombre=nombre;
+    }
+    public String getnCuenta(){
+        return nCuenta;
+    }
+    public void setnCuenta(String nCuenta){
+        this.nCuenta=nCuenta;
+    }
+    public double getSaldo(){
+        return saldo;
+    }
+    public void saldo(double saldo){
+        this.saldo=saldo;
+    }
+    
+}
+    
+    
+public class ClientesBancarios {
+    
+    public static void main(String[]args){
+     
+    clientes cliente1=new clientes("Antonio López","0001",20000);
+    clientes cliente2=new clientes("Rafael Gómez","0002",15000);
+    clientes cliente3=new clientes("Ana Martín","0003",200000);
+    clientes cliente4=new clientes("Juan Díaz","0004",20);
+    
+    Set<clientes> clientesDelBanco=new HashSet<clientes>();
+    clientesDelBanco.add(cliente1);
+    clientesDelBanco.add(cliente2);
+    clientesDelBanco.add(cliente3);
+    clientesDelBanco.add(cliente4);
+    
+    for (clientes cliente:clientesDelBanco){
+        System.out.println(cliente.getNombre()+" "+cliente.getnCuenta()+" "+cliente.getSaldo());
+        
+        }
+    }
+}
+
