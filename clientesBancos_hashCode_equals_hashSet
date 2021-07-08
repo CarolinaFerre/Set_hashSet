@@ -1,0 +1,92 @@
+package clientesBancos_hashCodeEquals;
+
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+public class clientes
+{
+    // Clase clientes
+   
+   
+	public clientes(String nombre,String nCuenta,double saldo){
+        this.nombre=nombre;
+        this.nCuenta=nCuenta;
+        this.saldo=saldo;
+       
+    }
+        private String nombre;
+        private String nCuenta;
+        private double saldo;
+
+    
+    public String getNombre(){
+        return nombre;
+    }
+    public void setNombre(String nombre){
+        this.nombre=nombre;
+    }
+    public String getnCuenta(){
+        return nCuenta;
+    }
+    public void setnCuenta(String nCuenta){
+        this.nCuenta=nCuenta;
+    }
+    public double getSaldo(){
+        return saldo;
+    }
+    public void saldo(double saldo){
+        this.saldo=saldo;
+    }
+    
+    @Override
+   	public int hashCode() {
+   		return Objects.hash(nCuenta);
+   	}
+   	@Override
+   	public boolean equals(Object obj) {
+   		if (this == obj)
+   			return true;
+   		if (obj == null)
+   			return false;
+   		if (getClass() != obj.getClass())
+   			return false;
+   		clientes other = (clientes) obj;
+   		return Objects.equals(nCuenta, other.nCuenta);
+   	}
+
+   	public static void main(String[]args){
+    
+   		clientes cliente1=new clientes("Antonio López","0001",20000);
+   		clientes cliente2=new clientes("Rafael Gómez","0002",15000);
+   		clientes cliente3=new clientes("Rafael Gómez","0002",15000);
+
+   		Set<clientes> clientesDelBanco=new HashSet<clientes>();
+   		clientesDelBanco.add(cliente1);
+   		clientesDelBanco.add(cliente2);
+   		//El programa no me deja agregar el cliente 3 porque tiene el número de cuenta igual
+   		//que el cliente 2 y al ser de tipo HashSet y aplicar hashcode() y equals en nCuenta le
+   		//estamos diciendo que no se permite agregar clientes con un número de cuenta igual
+   		clientesDelBanco.add(cliente3);
+   		
+   		System.out.println("********************");
+   		for (clientes cliente:clientesDelBanco){
+   			System.out.println(cliente.getNombre()+" "+cliente.getnCuenta()+" "+cliente.getSaldo());
+    
+   		}
+   		System.out.println("********************");
+   		if (cliente1.equals(cliente2)){
+   			System.out.println("Cliente 1 y 2 son iguales");
+   			cliente1.hashCode();
+   			cliente2.hashCode();
+   		}else {
+   			System.out.println("Cliente 1 y 2 no son iguales");
+   			cliente1.hashCode();
+   			cliente2.hashCode();
+   		}
+   		
+   		System.out.println("********************");
+   		
+   		
+   	}
+}
