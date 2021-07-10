@@ -136,6 +136,34 @@ public class datosInstituto {
 			System.out.println("Nombre ="+nombreAlumno);
 			
 		}
+  //Se da de baja a Olga del sistema porque se ha dado de baja con iterator y remove
+  
+  		System.out.println("A continuación se va a dar de baja a la alumna Olga Fernández López del sistema porque se ha dado de baja");
+			while(it.hasNext()) {
+			String nombreAlumno=it.next().getNombre();
+			if(nombreAlumno.equals("Olga"))it.remove();
+			
+		}
+		while(it.hasNext()) {
+			String apellidoAlumno=it.next().getApellidos();
+			if(apellidoAlumno.equals("Fernández López"))it.remove();
+			
+		}
+		while(it.hasNext()) {
+			int matriculaAlumno=it.next().getN_matricula();
+			if(matriculaAlumno==234)it.remove();
+			
+		}
+		while(it.hasNext()) {
+			String fechaAlumno=it.next().getFecha_nacimiento();
+			if(fechaAlumno.equals("12/04/1990"))it.remove();
+			
+		}
+		while(it.hasNext()) {
+			String dniAlumno=it.next().getDNI();
+			if(dniAlumno.equals("56734523J"))it.remove();
+			
+		}
 		System.out.println();
 		System.out.println("A continuación se muestra la información de los alumnos matriculados, cuyos dni y número de matriculación no pueden ser iguales...");
 		
