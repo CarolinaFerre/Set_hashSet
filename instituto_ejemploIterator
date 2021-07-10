@@ -1,0 +1,154 @@
+/*Programa que recoge los datos de los alumnos de un instituto (nombre, apellidos, número de matrícula, fecha de nacimiento */
+/* número de matrícula y número de Dni. Utilizar constructor con parámetros y los atributos privados.*/
+/* Usar la colección hashSet para almacenar los datos, usar los métodos hashCode y equals para detectar si hay datos de */
+/* número de matrícula y dni iguales (en cuyo caso no se podría repetir esos datos y no se mostraría ese alumno, ya que no pueden */
+/* haber dos alumnos con el mismo dni y el mismo número de matrícula). Recorrer los datos de los nombres con un iterator */
+/* y recorrer toda la información con un bucle for. */
+
+
+
+
+
+package colecciones;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
+
+public class datosInstituto {
+
+//Atributos privados
+	private String nombre;
+	private String apellidos;
+	private int n_matricula;
+	private String fecha_nacimiento;
+	private String DNI;
+  
+  //Constructor con parámetros
+	public datosInstituto(String nombre,String apellidos,int n_matricula,String fecha_nacimiento,String DNI) {
+		this.nombre=nombre;
+		this.apellidos=apellidos;
+		this.n_matricula=n_matricula;
+		this.fecha_nacimiento=fecha_nacimiento;
+		this.DNI=DNI;
+	}
+  
+  //métodos getter y setter para poder ver o modificar los datos de los alumnos que son privados
+	public String getNombre() {
+		return nombre;
+	}
+
+
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+
+
+	public int getN_matricula() {
+		return n_matricula;
+	}
+
+
+
+	public String getFecha_nacimiento() {
+		return fecha_nacimiento;
+	}
+
+
+
+	public String getDNI() {
+		return DNI;
+	}
+
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+
+
+	public void setN_matricula(int n_matricula) {
+		this.n_matricula = n_matricula;
+	}
+
+
+
+	public void setFecha_nacimiento(String fecha_nacimiento) {
+		this.fecha_nacimiento = fecha_nacimiento;
+	}
+
+
+
+	public void setDNI(String dNI) {
+		DNI = dNI;
+	}
+	
+	//Método hashCode() y equals() para verificar si hay datos iguales (en cuyo caso no se mostrará ese alumno, ya que las listas 
+  //hashSet no pueden tener datos repetidos.
+  
+	@Override
+	public int hashCode() {
+		return Objects.hash(DNI, n_matricula);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		datosInstituto other = (datosInstituto) obj;
+		return Objects.equals(DNI, other.DNI) && n_matricula == other.n_matricula;
+	}
+
+	public static void main(String[] args) {
+		datosInstituto alumno1=new datosInstituto("Olga","Fernandez López",234,"12/04/1990","56734523J");
+		datosInstituto alumno2=new datosInstituto("Marcos","Navarro Martin",235,"13/06/2000","65647464F");
+		datosInstituto alumno3=new datosInstituto("Pedro","López Martin",236,"14/05/2001","44747464H");
+		datosInstituto alumno4=new datosInstituto("Maite","Gallego Román",237,"20/09/2003","87747664T");
+		System.out.println("BASE DE DATOS DE IES TETUÁN DE LAS VICTORIAS");
+		
+		//Creamos una colección hashSet con los datos de los alumnos
+		Set<datosInstituto> DatosDeAlumnos=new HashSet<datosInstituto>();
+		DatosDeAlumnos.add(alumno1);
+		DatosDeAlumnos.add(alumno2);
+		DatosDeAlumnos.add(alumno3);
+		DatosDeAlumnos.add(alumno4);
+		System.out.println("A continuación se va a almacenar la información del nombre de  los alumnos matriculados en una lista");
+   
+   //Recorremos los datos de nombre con el iterator
+		Iterator<datosInstituto>it=DatosDeAlumnos.iterator();
+		while(it.hasNext()) {
+			System.out.println("**************************");
+			String nombreAlumno=it.next().getNombre();
+			System.out.println("Nombre ="+nombreAlumno);
+			
+		}
+		System.out.println();
+		System.out.println("A continuación se muestra la información de los alumnos matriculados, cuyos dni y número de matriculación no pueden ser iguales...");
+		
+    //Recorremos con el for los datos de la colección hashSet
+    for (datosInstituto instituto:DatosDeAlumnos) {
+			System.out.println("**************************");
+			System.out.println("Nombre del alumno= "+instituto.getNombre());
+			System.out.println("Apellidos del alumno= "+instituto.getApellidos());
+			System.out.println("Fecha de nacimiento del alumno= "+instituto.getFecha_nacimiento());
+			System.out.println("Número de matrícula= "+instituto.getN_matricula());
+			System.out.println("Dni del alumno= "+instituto.getDNI());
+			
+		}
+	}
+
+}
