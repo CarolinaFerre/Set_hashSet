@@ -1,0 +1,75 @@
+//EJEMPLO TRABAJANDO CON EL MÉTODO EQUALS PARA COMPARAR DOS OBJETOS
+
+public class coleccionesLibros
+{
+   
+    public coleccionesLibros(String autor,String titulo,int ISBN)
+    {
+       this.autor=autor;
+       this.titulo=titulo;
+       this.ISBN=ISBN;
+    }
+        
+        private String autor;
+        private String titulo;
+        private int ISBN;
+        
+    public String getAutor(){
+        return autor;
+    }   
+    public void setAutor(String autor){
+        this.autor=autor;
+    }
+    public String getTitulo(){
+        return titulo;
+    }
+    public void setTitulo(String titulo){
+        this.titulo=titulo;
+    }
+    public int getISBN(){
+        return ISBN;
+    }
+    public void setISBN(int ISBN){
+        this.ISBN=ISBN;
+    }
+    public void getDatos(){
+        System.out.println("El libro registrado en la bbdd es= titulo: "+titulo+" autor: "+autor+" ISBN: "+ISBN);
+    }
+    
+    //Utilizamos el método equals para poder comparar y decir si son iguales dos libros
+    public boolean equals(Object obj){
+        coleccionesLibros otroLibro=(coleccionesLibros)obj;
+        if(obj instanceof coleccionesLibros){
+            if(this.ISBN==otroLibro.ISBN) return true;
+            else return false;
+        }else return false;
+    }
+}
+        
+    public class testLibros {
+    
+  public static void main(String[]args){
+      
+      coleccionesLibros libroJuvenil=new coleccionesLibros("Carmen Laforet","Nada",8437641);
+      coleccionesLibros libroFantasia=new coleccionesLibros("Antonie de Saint","El principito",8498381);
+        
+      //Estamos comparando si los dos libros son iguales
+      libroJuvenil.getDatos();
+      libroFantasia.getDatos();
+      
+      System.out.println("A continuación se muestra si los libros son iguales= ");
+      
+      if(libroJuvenil.equals(libroFantasia)){
+        System.out.println("Son iguales");
+    }else{
+        System.out.println("No son iguales");
+        System.out.println(libroJuvenil.hashCode());
+        System.out.println(libroFantasia.hashCode());
+        
+        //Al ser códigos distintos, nos dice que no tienen el mismo espacio asignado en la memoria del ordenador
+        //Tantos equals como hashCode() son métodos para saber si dos objetos son iguales
+        System.out.println("No tienen el mismo código con lo cual no son iguales");
+        }
+    }
+}
+
