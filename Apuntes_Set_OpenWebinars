@@ -1,0 +1,100 @@
+
+
+COLECCIONES SIN
+REPETIDOS (SET) 
+________________
+
+La principal diferencia con las listas es que no admite repetidos.
+
+
+INTERFAZ SET
+_____________
+
+▸ No puede contener repetidos.
+
+▸ Propone tres implementaciones: HashSet,
+TreeSet y LinkedHastSet.
+
+▸ HashSet es la más eficiente, pero no nos
+asegura nada sobre el orden.
+
+▸ TreeSet utiliza un árbol Red-Black, ordena
+según el valor.
+
+▸ LinkedHashSet es un HashSet ordenado
+por orden de inserción. 
+
+
+
+OPERACIONES CON SET
+___________________
+
+
+Nombre          Uso
+____________________________________________________________
+
+add Añade un elemento al conjunto, si aun no está contenido
+
+addAll Añade todos los elementos de la colección pasada como argumento
+si es que aun no están presentes.
+
+clear Elimina todos los elementos del conjunto.
+
+contains Comprueba si un elemento está o no en el conjunto
+
+isEmpty Verifica si el conjunto está vacío
+
+remove Elimina un elemento del conjunto
+
+size Devuelve el número de elementos de la lista
+
+toArray Devuelve la lista como un array
+
+
+
+EJEMPLO SET
+_____________
+
+/**
+ * 
+ */
+package set;
+
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
+
+import modelo.Persona;
+
+/**
+ * @author Openwebinars
+ *
+ */
+public class EjemploSet {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+		Set<Persona> juntaDirectiva = new HashSet<>();
+		//Set<Persona> juntaDirectiva = new TreeSet<>(); //Para ordenar, Persona debe implementar Comparable
+		//Set<Persona> juntaDirectiva = new LinkedHashSet<>();
+		
+		
+		juntaDirectiva.add(new Persona("12345678A", "Pepe", "Perez", LocalDate.of(1990, 1, 2)));
+		juntaDirectiva.add(new Persona("23456789B", "Juan", "Martínez", LocalDate.of(1991, 2, 3)));
+		juntaDirectiva.add(new Persona("34567890C", "Ana", "Ramírez", LocalDate.of(1992, 3, 4)));
+		juntaDirectiva.add(new Persona("45678901D", "María", "López", LocalDate.of(1993, 4, 5)));
+		
+		//Si tratamos de añadir un elemento repetido...
+		juntaDirectiva.add(new Persona("45678901D", "María", "López", LocalDate.of(1993, 4, 5)));
+		
+		//Comprobamos que al listarlos todos, no aparece duplicado
+		for(Persona p : juntaDirectiva)
+			System.out.println(p);
+		
+		
+	}
+
+}
