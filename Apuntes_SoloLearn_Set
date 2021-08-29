@@ -1,0 +1,43 @@
+
+CONJUNTOS SET
+____________
+
+Un Set(conjunto) es una colección que no puede contener elementos duplicados. Este modela la idea de los conjuntos en matemáticas.
+
+Una de las implementaciones de Set es la clase HashSET.
+
+import java.util.HashSet;
+
+public class MyClass{
+
+  public static void main(String[]args){
+    
+    HashSet<String> set= new HashSet <String>();
+    
+    set.add("A");
+    set.add("B");
+    set.add("C");
+    
+    System.out.println(set);
+    
+    }
+   }
+   
+   Puedes utilizar el método size() para obtener el número de elementos en el HashSet.
+   
+   
+   LinkedHashSet
+   ______________
+   
+   La clase HashSet no retiene automáticamente el orden de los elementos conforme son añadidos. 
+   Para ordenar los elementos, utiliza una LinkedHashSet, la cual mantiene una lista enlazada de los elementos del conjunto en el orden en que 
+   fueron insertados.
+   
+   ¿Qué es ehashing?
+   
+   Una tabla hash(o matriz asociativa) almacena información a través de un mecanismo llamado hashing (asociación), en el cual el contendo informativo de una clave
+   es utilizado para determinar un valor único llamado código hash.
+   
+   Así que, básicamente, cada elemento en el HashSet está asociado con un código hash único.
+   
+   
